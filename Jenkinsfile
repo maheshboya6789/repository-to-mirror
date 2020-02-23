@@ -22,7 +22,8 @@ pipeline {
         }
         stage('deploy to tomcat')
         {
-            steps{
+            steps
+            {
             deploy adapters: [tomcat8(credentialsId: 'tomcat', path: '', url: 'http://18.188.108.195:8080/')], contextPath: 'artifact', war: 'taget/vproifle-v1.war'
             }
         }
