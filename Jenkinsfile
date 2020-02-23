@@ -12,7 +12,7 @@ pipeline {
            }
          stage('code build by maven'){
                steps{
-               sh'mvn install'
+               sh'mvn clean install'
            }
           } 
         stage('nexus upload')
