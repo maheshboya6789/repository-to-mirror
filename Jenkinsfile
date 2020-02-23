@@ -4,9 +4,10 @@ pipeline {
         DOCKER_TAG = getDockerTag()
     }
     stages{
-       stage('code cloning'){
+       stage('code cloning')
+        {
          steps{
-            sh'git clone 'https://github.com/anilkumarpuli/node-app.git'
+           sh'git clone 'https://github.com/anilkumarpuli/node-app.git'
                }
            }
          stage('code build by maven'){
