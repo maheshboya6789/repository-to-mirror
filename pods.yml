@@ -8,6 +8,7 @@ spec:
    containers:
     - name: newcontain3
       image: anilkumblepuli/java3:tagVersion
+      imagePullPolicy: Never
       ports:
        - name: newport3
          containerPort: 8080
