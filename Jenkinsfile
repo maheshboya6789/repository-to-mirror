@@ -23,9 +23,7 @@ pipeline {
             }
          }
       }
-   }
-
-        stage('nexus upload')
+      stage('nexus upload')
         {
             steps{nexusArtifactUploader artifacts: [[artifactId: 'java', classifier: 'artifact', file: 'tartget/vprofile-v1.war', type: 'war']], credentialsId: 'nexu-id', groupId: 'vprofile', nexusUrl: '172.31.19.30:8081/nexus', nexusVersion: 'nexus2', protocol: 'http', repository: 'releases', version: '$BUILD_ID'
                  }
