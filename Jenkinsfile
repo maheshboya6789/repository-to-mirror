@@ -45,7 +45,7 @@ pipeline {
             steps{
                 sh "chmod +x changeTag.sh"
                 sh "./changeTag.sh ${DOCKER_TAG}"
-                sshagent(['k8s-machine']) {
+                sshagent(['kops-machine']) {
                     sh "scp -o StrictHostKeyChecking=no services.yml node-app-pod.yml ubuntu@172.31.14.30:/home/ubuntu/"
                     script{
                         try{
