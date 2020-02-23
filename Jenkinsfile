@@ -30,14 +30,14 @@ pipeline {
     }
         stage('Build Docker Image'){
             steps{
-                sh "docker build . -t anilkumblepuli/vprofile1:${DOCKER_TAG}"
+                sh "docker build . -t anilkumblepuli/java2:${DOCKER_TAG}"
             }
         }
         stage('DockerHub Push'){
             steps{
                 withCredentials([string(credentialsId: 'dockerhub', variable: 'dockerhub')])  {
                     sh "docker login -u anilkumblepuli -p ${dockerhub}"
-                    sh "docker push anilkumblepuli/vprofile1:${DOCKER_TAG}"
+                    sh "docker push anilkumblepuli/java2:${DOCKER_TAG}"
                 }
             }
         }
