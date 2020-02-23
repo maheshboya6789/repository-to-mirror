@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: newpod
+  name: newpod3
   labels:
-    app: newpod
+    app: newpod3
 spec:
    containers:
-    - name: newcontain
-      image: anilkumblepuli/java2:tagVersion
+    - name: newcontain3
+      image: anilkumblepuli/java3:tagVersion
       ports:
-       - name: vproapp-port1
+       - name: newport3
          containerPort: 8080
