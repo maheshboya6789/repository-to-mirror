@@ -20,6 +20,12 @@ pipeline {
             steps{nexusArtifactUploader artifacts: [[artifactId: 'java', classifier: 'artifact', file: 'tartget/vprofile-v1.war', type: 'war']], credentialsId: 'nexu-id', groupId: 'vprofile', nexusUrl: '18.189.31.87:8081/nexus', nexusVersion: 'nexus2', protocol: 'http', repository: 'releases', version: '$BUILD_ID'
                  }
         }
+        stage('deploy to tomcat')
+        {
+            steps{
+            deploy adapters: [tomcat8(credentialsId: 'tomcat', path: '', url: 'http://18.188.108.195:8080/')], contextPath: 'artifact', war: 'taget/vproifle-v1.war'
+            }
+        }
         stage('Build Docker Image'){
             steps{
                 sh "docker build . -t anilkumblepuli/vprofile1:${DOCKER_TAG}"
