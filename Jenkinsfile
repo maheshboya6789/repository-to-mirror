@@ -7,7 +7,7 @@ pipeline {
        stage('code cloning')
         {
          steps{
-           sh'git clone -f https://github.com/anilkumarpuli/node-app.git'
+           sh'git clone https://github.com/anilkumarpuli/node-app.git'
            }
            }
          stage('code build by maven'){
@@ -24,9 +24,9 @@ pipeline {
         {
             steps
             {
-            deploy adapters: [tomcat8(credentialsId: 'tomcat', path: '', url: 'http://172.31.30.68:8080/')], contextPath: 'artifact', war: 'taget/vproifle-v1.war'
-            }
+      deploy adapters: [tomcat8(credentialsId: 'tomcat', path: '', url: 'http://18.217.193.217:8080')], contextPath: 'artifact', war: 'target/vprofile-v1.war'            }
         }
+    }
         stage('Build Docker Image'){
             steps{
                 sh "docker build . -t anilkumblepuli/vprofile1:${DOCKER_TAG}"
