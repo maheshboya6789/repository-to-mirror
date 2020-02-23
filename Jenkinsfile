@@ -24,7 +24,7 @@ pipeline {
         {
             steps
             {
-            deploy adapters: [tomcat8(credentialsId: 'tomcat', path: '', url: 'http://18.188.108.195:8080/')], contextPath: 'artifact', war: 'taget/vproifle-v1.war'
+            deploy adapters: [tomcat8(credentialsId: 'tomcat', path: '', url: 'http://172.31.30.68:8080/')], contextPath: 'artifact', war: 'taget/vproifle-v1.war'
             }
         }
         stage('Build Docker Image'){
