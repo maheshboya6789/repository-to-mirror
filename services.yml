@@ -6,8 +6,8 @@ spec:
    ports:
    - port: 30001
      nodePort: 30001
-     targetPort: vproapp-port
+     targetPort: vproapp-port1
      protocol: TCP
   selector:
-     app: vproapp
+     app: newpod
   type: NodePort
