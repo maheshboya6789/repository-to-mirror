@@ -8,7 +8,7 @@ pipeline {
         {
          steps{
            sh'git clone 'https://github.com/anilkumarpuli/node-app.git'
-               }
+           }
            }
          stage('code build by maven'){
                steps{
