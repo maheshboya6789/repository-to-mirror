@@ -52,9 +52,9 @@ pipeline {
                             
                             sh "ssh ubuntu@172.31.14.30 kubectl apply -f ."
                         }catch(error){
-                            sh "ssh ubuntu@172.31.14.30 kubectl delete pod -f nodeapp3"
+                            sh "ssh ubuntu@172.31.14.30 kubectl delete pod -f all"
                             sh"ssh ubuntu@172.31.14.30 kubectl delete svc -f nodeapp "
-                            sh "ubuntu@172.31.14.30 kubectl create -f ."
+                            sh "ssh ubuntu@172.31.14.30 kubectl create -f ."
                         }
                     }
                 }
