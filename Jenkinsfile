@@ -3,26 +3,18 @@ pipeline {
     environment{
         DOCKER_TAG = getDockerTag()
     }
-    tools {
-      // Install the Maven version configured as "M3" and add it to the path.
-      maven "maven"
-   }
-
-   stages {
-      stage('Build') {
-         steps {
-            git 'https://github.com/jglick/simple-maven-project-with-tests.git'
-            sh "mvn -Dmaven.test.failure.ignore=true clean package"
-
-           }
-
-         post {
-            success {
-               junit '**/target/surefire-reports/TEST-*.xml'
-               archiveArtifacts 'target/vprofile-v1.war'
+    stages{
+        stage('git clone')
+        {
+        steps{
+            sh' git clone https://github.com/anilkumarpuli/node-app.git'
+        }
+        }
+        stage('build'){
+            steps{
+                sh'mvn clean install'
             }
-         }
-      }
+        }
       stage('nexus upload')
         {
             steps{nexusArtifactUploader artifacts: [[artifactId: 'java', classifier: 'artifact', file: 'tartget/vprofile-v1.war', type: 'war']], credentialsId: 'nexu-id', groupId: 'vprofile', nexusUrl: '172.31.19.30:8081/nexus', nexusVersion: 'nexus2', protocol: 'http', repository: 'releases', version: '$BUILD_ID'
