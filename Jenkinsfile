@@ -18,7 +18,8 @@ pipeline {
         }
       stage('nexus upload')
         {
-            steps{nexusArtifactUploader artifacts: [[artifactId: 'mavenrepo', classifier: 'artifact', file: 'target/vprofile-v1.war', type: 'war']], credentialsId: 'nexu-id', groupId: 'vprofile', nexusUrl: '172.31.19.30:8081/nexus', nexusVersion: 'nexus3', protocol: 'http', repository: 'releases', version: '$BUILD_ID'
+            steps{
+               nexusArtifactUploader artifacts: [[artifactId: 'hai', classifier: 'java', file: 'target/vprofile-v1.war', type: 'war']], credentialsId: 'nexu-id', groupId: 'mygroup', nexusUrl: '18.216.176.243:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'mavenrepo', version: '$BUILD_ID'
                  }
         }
         stage('deploy to tomcat')
