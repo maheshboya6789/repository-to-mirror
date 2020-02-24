@@ -36,6 +36,8 @@ pipeline {
         stage('DockerHub Push'){
             steps{
                 withCredentials([string(credentialsId: 'dockerhub', variable: 'dockerhub')])  {
+                    
+                    sh "sudo chown root:ubuntu /var/run/docker.sock"
                     sh "docker login -u anilkumblepuli -p ${dockerhub}"
                     sh "docker push anilkumblepuli/java2:${DOCKER_TAG}"
                 }
