@@ -16,7 +16,7 @@ pipeline {
                 sh'mvn clean install'
             }
         }
-          stage('Sonarqube') {
+          stage('Sonar') {
     environment {
         def scannerHome = tool 'sonar';
     }
