@@ -30,14 +30,15 @@ pipeline {
     }
         stage('Build Docker Image'){
             steps{
-                sh "docker build . -t anilkumblepuli/java2:${DOCKER_TAG}"
+               sh "sudo chmod 664 root:ubuntu /var/run/docker.sock"
+
+               sh "docker build . -t anilkumblepuli/java2:${DOCKER_TAG}"
             }
         }
         stage('DockerHub Push'){
             steps{
                 withCredentials([string(credentialsId: 'dockerhub', variable: 'dockerhub')])  {
                     
-                    sh "sudo chmod 664 root:ubuntu /var/run/docker.sock"
                     sh "docker login -u anilkumblepuli -p ${dockerhub}"
                     sh "docker push anilkumblepuli/java2:${DOCKER_TAG}"
                 }
