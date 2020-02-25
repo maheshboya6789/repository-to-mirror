@@ -33,9 +33,9 @@ pipeline {
         {
          sh "${scannerHome}/bin/sonar-scanner"
       }
-        timeout(time: 1, unit: 'MINUTES') {
-          waitForQualityGate abortPipeline: true
-        }
+       // timeout(time: 1, unit: 'MINUTES') {
+         // waitForQualityGate abortPipeline: true
+        //}
     }
 }
       stage('nexus upload')
