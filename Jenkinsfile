@@ -26,7 +26,7 @@ pipeline {
         {
     environment 
      {
-        def scannerHome = tool 'sonar';
+        def scannerHome =tool name: 'sonar', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
     }
     steps {
      withSonarQubeEnv(credentialsId: 'sonar-id') 
