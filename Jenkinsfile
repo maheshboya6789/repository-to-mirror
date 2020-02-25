@@ -16,6 +16,25 @@ pipeline {
                 sh'mvn clean install'
             }
         }
+         stage('Unit Test Results') {
+      steps {
+      junit '**/target/surefire-reports/TEST-*.xml'
+      
+     }
+ }
+ stage('Sonarqube') {
+    environment {
+        def scannerHome = tool 'sonar';
+    }
+    steps {
+     withSonarQubeEnv(credentialsId: 'sonar-id') {
+            sh "${scannerHome}/bin/sonar-scanner"
+        }
+        timeout(time: 1, unit: 'MINUTES') {
+          waitForQualityGate abortPipeline: true
+        }
+    }
+}
       stage('nexus upload')
         {
             steps{
