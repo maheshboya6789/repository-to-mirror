@@ -22,15 +22,16 @@ pipeline {
       
      }
  }
- stage('Sonarqube') {
+ stage('Sonarqube')
+        {
     environment 
      {
         def scannerHome = tool 'sonar';
     }
     steps {
      withSonarQubeEnv(credentialsId: 'sonar-id') {
-            sh "${scannerHome}/bin/sonar-scanner"
-        }
+         sh "${scannerHome}/bin/sonar-scanner}"
+      }
         timeout(time: 1, unit: 'MINUTES') {
           waitForQualityGate abortPipeline: true
         }
