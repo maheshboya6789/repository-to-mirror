@@ -26,7 +26,7 @@ pipeline {
         {
             steps
             {
-  deploy adapters: [tomcat9(credentialsId: 'tomcat', path: '', url: 'http://18.222.127.133:8080')], contextPath: 'anil', war: 'target/vprofile-v1.war'        }
+  deploy adapters: [tomcat9(credentialsId: 'tomcat', path: '', url: 'http://ec2-3-19-57-8.us-east-2.compute.amazonaws.com:8080')], contextPath: 'anil', war: 'target/vprofile-v1.war'        }
     }
         stage('Build Docker Image'){
             steps{
