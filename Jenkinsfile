@@ -29,7 +29,8 @@ pipeline {
         def scannerHome = tool 'sonar';
     }
     steps {
-     withSonarQubeEnv(credentialsId: 'sonar-id') {
+     withSonarQubeEnv(credentialsId: 'sonar-id') 
+        {
          sh "${scannerHome}/bin/sonar-scanner"
       }
         timeout(time: 1, unit: 'MINUTES') {
