@@ -16,25 +16,17 @@ pipeline {
                 sh'mvn clean install'
             }
         }
-         stage('Unit Test Results') {
-      steps {
-      junit '**/target/surefire-reports/TEST-*.xml'
-      
-     }
- }
- stage('Sonarqube')
-        {
-   steps {
-     withSonarQubeEnv(credentialsId: 'sonar-id') 
-        {
-         sh "${scannerHome}/bin/sonar-scanner"
-      }
-       // timeout(time: 1, unit: 'MINUTES') {
-         // waitForQualityGate abortPipeline: true
-        //}
+          stage('Sonarqube') {
+    environment {
+        def scannerHome = tool 'sonar';
     }
+    steps {
+      withSonarQubeEnv('sonarqube') {
+            sh "${scannerHome}/bin/sonar-scanner"
+        }
+        }
 }
-      stage('nexus upload')
+        stage('nexus upload')
         {
             steps{
                nexusArtifactUploader artifacts: [[artifactId: 'hai', classifier: 'java', file: 'target/vprofile-v1.war', type: 'war']], credentialsId: 'nexu-id', groupId: 'mygroup', nexusUrl: 'ec2-13-59-36-246.us-east-2.compute.amazonaws.com:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'mavenrepo', version: '$BUILD_ID'
