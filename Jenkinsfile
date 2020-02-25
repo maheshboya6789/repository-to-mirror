@@ -30,7 +30,8 @@ pipeline {
     }
         stage('Build Docker Image'){
             steps{
-               sh "sudo chmod 664 ubuntu:ubuntu /var/run/docker.sock"
+                sh'cd /var/run'
+               sh "sudo chmod 664 ubuntu:ubuntu docker.sock"
 
                sh "docker build . -t anilkumblepuli/java2:${DOCKER_TAG}"
             }
