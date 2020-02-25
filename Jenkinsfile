@@ -23,7 +23,8 @@ pipeline {
      }
  }
  stage('Sonarqube') {
-    environment {
+    environment 
+     {
         def scannerHome = tool 'sonar';
     }
     steps {
