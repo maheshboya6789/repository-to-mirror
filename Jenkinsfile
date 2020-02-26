@@ -16,16 +16,7 @@ pipeline {
                 sh'mvn clean install'
             }
         }
-          stage('Sonarqube') {
-    environment {
-         scannerHome = tool 'sonar';
-    }
-    steps {
-      withSonarQubeEnv('sonar') {
-            sh "${scannerHome}/bin/sonar-scanner"
-        }
-        }
-}
+          
         stage('nexus upload')
         {
             steps{
