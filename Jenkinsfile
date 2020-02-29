@@ -20,7 +20,7 @@ pipeline {
         stage('nexus upload')
         {
             steps{
-               nexusArtifactUploader artifacts: [[artifactId: 'hai', classifier: 'java', file: 'target/vprofile-v1.war', type: 'war']], credentialsId: 'nexu-id', groupId: 'mygroup', nexusUrl: 'http://172.31.2.67:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'mavenrepo', version: '$BUILD_ID'
+               nexusArtifactUploader artifacts: [[artifactId: 'hai', classifier: 'java', file: 'target/vprofile-v1.war', type: 'war']], credentialsId: 'nexu-id', groupId: 'mygroup', nexusUrl: 'http://3.21.105.250:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'mavenrepo', version: '$BUILD_ID'
                  }
         }
         stage('deploy to tomcat')
@@ -31,7 +31,7 @@ pipeline {
     }
         stage('Build Docker Image'){
             steps{
-
+                sh'docker rmi ${DOCKER_TAG}
                sh "docker build . -t anilkumblepuli/java2:${DOCKER_TAG}"
             }
         }
