@@ -6,8 +6,8 @@ spec:
    ports:
    - port: 30003
      nodePort: 30003
-     targetPort: newport3
+     targetPort: newport4
      protocol: TCP
   selector:
-     app: newpod3
+     app: newpod4
   type: NodePort
