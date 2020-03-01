@@ -16,8 +16,21 @@ pipeline {
                 sh'mvn clean install'
             }
         }
-          
-        //stage('nexus upload')
+          stage('Sonarqube') {
+    environment {
+        def scannerHome = tool 'sonar';
+    }
+    steps {
+      withSonarQubeEnv('sonar') {
+            sh "${scannerHome}/bin/sonar-scanner"
+        }
+        timeout(time: 10, unit: 'MINUTES') {
+          waitForQualityGate abortPipeline: true
+        }
+    }
+}
+ 
+           //stage('nexus upload')
         //{
           //  steps{
             //   nexusArtifactUploader artifacts: [[artifactId: 'webapp', classifier: 'hello', file: 'target/vprofile-v1.war', type: 'war']], credentialsId: 'nexu-id', groupId: 'mygroup', nexusUrl: '18.222.227.58:8080', nexusVersion: 'nexus3', protocol: 'http', repository: 'mavenrepo', version: '$BUILD_ID'   }
@@ -26,7 +39,7 @@ pipeline {
         {
             steps
             {
-  deploy adapters: [tomcat9(credentialsId: 'tomcat', path: '', url: 'http://3.15.45.248:8080')], contextPath: 'anil', war: 'target/vprofile-v1.war'        
+  deploy adapters: [tomcat9(credentialsId: 'tomcat', path: '', url: 'http://172.31.27.35:8080')], contextPath: 'anil', war: 'target/vprofile-v1.war'        
     }
         }
         stage('Build Docker Image'){
