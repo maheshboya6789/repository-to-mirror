@@ -20,8 +20,8 @@ pipeline {
         stage('nexus upload')
         {
             steps{
-               nexusArtifactUploader artifacts: [[artifactId: 'webaapp', classifier: '', file: 'target/vprofile-v1.war', type: 'war']], credentialsId: 'nexu-id', groupId: 'my-id', nexusUrl: '18.191.254.193:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'myrepo', version: '$BUILD_ID'
-                 }
+               nexusArtifactUploader artifacts: [[artifactId: 'webapp', classifier: '', file: 'target/vprofile-v1.war', type: 'war']], credentialsId: 'nexu-id', groupId: 'mygroup', nexusUrl: '18.222.227.58:8080', nexusVersion: 'nexus3', protocol: 'http', repository: 'mavenrepo', version: '$BUILD_ID'   
+        }
         }
         stage('deploy to tomcat')
         {
