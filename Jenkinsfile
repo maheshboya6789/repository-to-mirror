@@ -17,11 +17,11 @@ pipeline {
             }
         }
           
-        stage('nexus upload')
-        {
-            steps{
-               nexusArtifactUploader artifacts: [[artifactId: 'webapp', classifier: 'hello', file: 'target/vprofile-v1.war', type: 'war']], credentialsId: 'nexu-id', groupId: 'mygroup', nexusUrl: '18.222.227.58:8080', nexusVersion: 'nexus3', protocol: 'http', repository: 'mavenrepo', version: '$BUILD_ID'   }
-        }
+        //stage('nexus upload')
+        //{
+          //  steps{
+            //   nexusArtifactUploader artifacts: [[artifactId: 'webapp', classifier: 'hello', file: 'target/vprofile-v1.war', type: 'war']], credentialsId: 'nexu-id', groupId: 'mygroup', nexusUrl: '18.222.227.58:8080', nexusVersion: 'nexus3', protocol: 'http', repository: 'mavenrepo', version: '$BUILD_ID'   }
+        //}
         stage('deploy to tomcat')
         {
             steps
