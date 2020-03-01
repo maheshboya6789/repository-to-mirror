@@ -24,13 +24,9 @@ pipeline {
       withSonarQubeEnv('sonar') {
             sh "${scannerHome}/bin/sonar-scanner"
     }
-        timeout(time: 10, unit: 'MINUTES') {
-          waitForQualityGate abortPipeline: true
-        }
     }
 }
- 
-           stage('nexus upload')
+        stage('nexus upload')
         {
             steps{
          nexusArtifactUploader artifacts: [[artifactId: 'webapp', classifier: 'hello', file: 'target/vprofile-v1.war', type: 'war']], credentialsId: 'nexu-id', groupId: 'mygroup', nexusUrl: 'http://18.222.119.48:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'mavenrepo', version: '$BUILD_ID'   }
