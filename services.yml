@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-   name: vproapp-servic3
+   name: vproapp-servic5
 spec:
    ports:
    - port: 30003
      nodePort: 30003
-     targetPort: newport4
+     targetPort: newport5
      protocol: TCP
   selector:
-     app: newpod4
+     app: newpod5
   type: NodePort
