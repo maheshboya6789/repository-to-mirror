@@ -20,14 +20,14 @@ pipeline {
         stage('nexus upload')
         {
             steps{
-               nexusArtifactUploader artifacts: [[artifactId: 'hai', classifier: 'java', file: 'target/vprofile-v1.war', type: 'war']], credentialsId: 'nexu-id', groupId: 'mygroup', nexusUrl: 'http://18.191.254.193:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'mavenrepo', version: '$BUILD_ID'
+               nexusArtifactUploader artifacts: [[artifactId: 'webaapp', classifier: '', file: 'target/vprofile-v1.war', type: 'war']], credentialsId: 'nexu-id', groupId: 'my-id', nexusUrl: '18.191.254.193:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'myrepo', version: '$BUILD_ID'
                  }
         }
         stage('deploy to tomcat')
         {
             steps
             {
-  deploy adapters: [tomcat9(credentialsId: 'tomcat', path: '', url: 'http://172.31.27.35:8080')], contextPath: 'anil', war: 'target/vprofile-v1.war'        }
+  deploy adapters: [tomcat9(credentialsId: 'tomcat', path: '', url: 'http://3.15.45.248:8080')], contextPath: 'anil', war: 'target/vprofile-v1.war'        
     }
         stage('Build Docker Image'){
             steps{
