@@ -31,8 +31,8 @@ pipeline {
         }
         stage('Build Docker Image'){
             steps{
-                sh"docker rmi ${DOCKER_TAG}"
-               sh "docker build . -t anilkumblepuli/java2:${DOCKER_TAG}"
+                sh 'docker rmi  anilkumblepuli/java2'
+                sh "docker build . -t anilkumblepuli/java2:${DOCKER_TAG}"
             }
         }
         stage('DockerHub Push'){
