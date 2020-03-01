@@ -29,6 +29,7 @@ pipeline {
             {
   deploy adapters: [tomcat9(credentialsId: 'tomcat', path: '', url: 'http://3.15.45.248:8080')], contextPath: 'anil', war: 'target/vprofile-v1.war'        
     }
+        }
         stage('Build Docker Image'){
             steps{
                 sh"docker rmi ${DOCKER_TAG}"
