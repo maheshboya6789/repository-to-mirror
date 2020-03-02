@@ -17,15 +17,15 @@ pipeline {
             }
         }
           stage('Sonarqube') {
-    /environment {
+      environment {
        def scannerHome = tool 'Sonar';
-    /}
-    /steps {
+    }
+   steps {
      withSonarQubeEnv('Sonar') {
           sh "${scannerHome}/bin/sonar-scanner"
-   // }
-    /}
-//}
+      }
+     }
+    }
         stage('nexus upload')
         {
             steps{
