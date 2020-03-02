@@ -16,15 +16,15 @@ pipeline {
                 sh'mvn clean install'
             }
         }
-          //stage('Sonarqube') {
-    //environment {
-      //  def scannerHome = tool 'Sonar';
-    //}
-    //steps {
-     // withSonarQubeEnv('Sonar') {
-       //     sh "${scannerHome}/bin/sonar-scanner"
+          stage('Sonarqube') {
+    /environment {
+       def scannerHome = tool 'Sonar';
+    /}
+    /steps {
+     withSonarQubeEnv('Sonar') {
+          sh "${scannerHome}/bin/sonar-scanner"
    // }
-    //}
+    /}
 //}
         stage('nexus upload')
         {
