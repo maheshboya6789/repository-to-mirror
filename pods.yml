@@ -6,8 +6,8 @@ metadata:
     app: newpod5
 spec:
    containers:
-    - name: newcontain5
+    - name: newcontain6
       image: anilkumblepuli/java2:tagVersion
       ports:
-       - name: newport5
+       - name: newport6
          containerPort: 8080
