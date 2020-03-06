@@ -4,8 +4,8 @@ metadata:
    name: vproapp-servic6
 spec:
    ports:
-   - port: 30003
-     nodePort: 30003
+   - port: 30001
+     nodePort: 30001
      targetPort: newport6
      protocol: TCP
   selector:
