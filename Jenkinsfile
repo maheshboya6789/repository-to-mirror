@@ -65,7 +65,7 @@ pipeline {
                             sh "ssh ubuntu@172.31.14.30 kubectl apply -f ."
                         }catch(error){
                             sh "ssh ubuntu@172.31.14.30 kubectl create -f ."
-                            sh "kubectl delete pod newpod5"
+                            
                         }
                     }
                 }
