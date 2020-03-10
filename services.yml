@@ -8,6 +8,6 @@ spec:
      nodePort: 30001
      targetPort: newport1
      protocol: TCP
-  selector:
+   selector:
      app: newpod1
-  type: NodePort
+   type: NodePort
