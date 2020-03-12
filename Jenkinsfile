@@ -36,9 +36,9 @@ pipeline {
         {
         steps
         {
-         sshPublisher(publishers: [sshPublisherDesc(configName: 'ansible_server', transfers: [sshTransfer(cleanRemote: false, excludes: 'vprofile-v1.war', execCommand: '', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '/home/ansible', remoteDirectorySDF: false, removePrefix: '/home/ansible/workspace/workspace/pipeline/', sourceFiles: '/home/ansible/workspace/workspace/pipeline/target/vprofile-v1.war')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
-        }   
-        }   
+      sshPublisher(publishers: [sshPublisherDesc(configName: 'ansible_server', transfers: [sshTransfer(cleanRemote: false, excludes: 'vprofile-v1.war', execCommand: '', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '/home/ansible/ansible-playbook copywar.war', remoteDirectorySDF: false, removePrefix: '/home/ansible/workspace/workspace/pipeline/', sourceFiles: '/home/ansible/workspace/workspace/pipeline/target/vprofile-v1.war')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])                }   
+        } 
+        }
         stage('deploy to tomcat')
         {
             steps
