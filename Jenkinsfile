@@ -26,11 +26,11 @@ pipeline {
       }
      }
     }
-        stage('nexus upload')
-        {
-            steps{
-       nexusArtifactUploader artifacts: [[artifactId: 'vprofile-v1', classifier: '', file: 'target/vprofile-v1.war', type: 'war']], credentialsId: 'nexu-id', groupId: 'vprofile-v1', nexusUrl: '172.31.2.67:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'mavenrepo', version: '$BUILD_ID'
+        stage('nexus upload'){
+        steps{
+        nexusArtifactUploader artifacts: [[artifactId: 'vprofile-v1', classifier: '', file: 'target/vprofile-v1.war', type: 'war']], credentialsId: 'nexu-id', groupId: 'vprofile-v1', nexusUrl: '172.31.2.67:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'mavenrepo', version: '$BUILD_ID'
          }
+        }
         
         stage('deploy through ansible tomcat')
         {
