@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent {label 'mynode'}
     environment{
         DOCKER_TAG = getDockerTag()
     }
@@ -36,7 +36,7 @@ pipeline {
         {
         steps
             {
-      deploy adapters: [tomcat9(credentialsId: 'tomcat', path: '', url: 'http://172.31.27.35:8080')], contextPath: 'anil', war: '**/*.war'        
+      deploy adapters: [tomcat9(credentialsId: 'tomcat', path: '', url: 'http://172.31.38.134:8080')], contextPath: 'anil', war: '**/*.war'        
        }
         }
         stage('Build Docker Image'){
