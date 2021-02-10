@@ -47,7 +47,8 @@ pipeline {
         }
         stage('DockerHub Push'){
             steps{
-                 withCredentials([string(credentialsId: 'docker-secret1', variable: 'docker-secret1')]) {
+                 withCredentials([string(credentialsId: 'docker-secret1', variable: 'docker-secret1')]) 
+                
                 {                    
                     sh "docker login -u anilkumblepuli -p ${docker-secret1}"
                     sh "docker push anilkumblepuli/java2:${DOCKER_TAG}"
