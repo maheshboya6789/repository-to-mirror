@@ -1,0 +1,11 @@
+[core]
+	repositoryformatversion = 0
+	filemode = false
+	bare = true
+	symlinks = false
+	ignorecase = true
+[remote "origin"]
+	url = https://github.com/maheshboya6789/mirrorrepo.git
+	fetch = +refs/*:refs/*
+	mirror = true
+	pushurl = https://github.com/maheshboya6789/repository-to-mirror
